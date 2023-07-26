@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+  // output directory must match the prisma_js_library rule name
+  output   = "./myclient"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://postgres:mylocalpgpassword1@localhost:5432/devdb?schema=public&connection_limit=1"
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+}
